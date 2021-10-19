@@ -108,6 +108,7 @@
             <Form>frmSimuladores</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uSimulacoes.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

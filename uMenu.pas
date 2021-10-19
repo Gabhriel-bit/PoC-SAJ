@@ -4,19 +4,23 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uSimulador, Vcl.ExtCtrls, System.Generics.Collections;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uSimulador, Vcl.ExtCtrls,
+  System.ImageList, Vcl.ImgList;
 
 type
   TfrmMenu = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
+    btn_Simular: TButton;
+    btn_FecharJanelas: TButton;
     Panel1: TPanel;
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    btn_Sair: TButton;
+    procedure btn_SimularClick(Sender: TObject);
+    procedure btn_FecharJanelasClick(Sender: TObject);
+    procedure btn_SairClick(Sender: TObject);
   private
     { Private declarations }
-    umaListaForm : TObjectList<TfrmSimuladores>;
+  protected
+    function CriarFrmSimulador(): TfrmSimuladores;
+    procedure FecharTodosSimuladores();
   public
     { Public declarations }
   end;
@@ -28,24 +32,39 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmMenu.Button1Click(Sender: TObject);
+procedure TfrmMenu.btn_SairClick(Sender: TObject);
 begin
-    umaListaForm.Add(TfrmSimuladores.Create(self));
-    umaListaForm[umaListaForm.Count - 1].Show();
+  self.FecharTodosSimuladores();
+  Close();
 end;
 
-procedure TfrmMenu.Button2Click(Sender: TObject);
+procedure TfrmMenu.btn_SimularClick(Sender: TObject);
 begin
-  while (umaListaForm.Count > 0) do
+  self.CriarFrmSimulador();
+end;
+
+procedure TfrmMenu.btn_FecharJanelasClick(Sender: TObject);
+begin
+  self.FecharTodosSimuladores();
+end;
+
+function TfrmMenu.CriarFrmSimulador(): TfrmSimuladores;
+begin
+    result := TfrmSimuladores.Create(self);
+    if MDIChildCount > 2 then
+      self.ActiveMDIChild.WindowState := wsMinimized;
+    self.MDIChildren[self.MDIChildCount - 1].Show;
+end;
+
+procedure TfrmMenu.FecharTodosSimuladores();
+Var  I : Integer;
+begin
+  I := MDIChildCount;
+  while (I > 0) do
   begin
-    umaListaForm[umaListaForm.Count-1].Close;
-    umaListaForm.Delete(umaListaForm.Count-1);
+    I := I -1;
+    MDIChildren[I].Close;
   end;
-end;
-
-procedure TfrmMenu.FormCreate(Sender: TObject);
-begin
-  umaListaForm := TObjectList<TfrmSimuladores>.Create();
 end;
 
 end.

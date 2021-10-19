@@ -4,7 +4,7 @@ object frmMenu: TfrmMenu
   Caption = 'PoC Sistema de Amortiza'#231#227'o Juros'
   ClientHeight = 454
   ClientWidth = 672
-  Color = clMenuBar
+  Color = clHighlightText
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -14,7 +14,6 @@ object frmMenu: TfrmMenu
   OldCreateOrder = False
   Position = poDesktopCenter
   WindowState = wsMaximized
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -26,14 +25,34 @@ object frmMenu: TfrmMenu
     Color = clInactiveCaption
     Enabled = False
     ParentBackground = False
+    ParentShowHint = False
+    ShowCaption = False
+    ShowHint = True
     TabOrder = 2
+    ExplicitTop = 47
+    ExplicitHeight = 413
   end
-  object Button2: TButton
+  object btn_Sair: TButton
     Left = 8
-    Top = 59
+    Top = 108
     Width = 137
     Height = 49
-    Caption = 'FECHAR JANELAS'
+    Caption = 'SAIR'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+    OnClick = btn_SairClick
+  end
+  object btn_FecharJanelas: TButton
+    Left = 8
+    Top = 58
+    Width = 137
+    Height = 49
+    Caption = 'LIMPAR'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -41,11 +60,11 @@ object frmMenu: TfrmMenu
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    OnClick = Button2Click
+    OnClick = btn_FecharJanelasClick
   end
-  object Button1: TButton
+  object btn_Simular: TButton
     Left = 8
-    Top = 11
+    Top = 8
     Width = 137
     Height = 49
     Caption = 'SIMULAR'
@@ -56,6 +75,6 @@ object frmMenu: TfrmMenu
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    OnClick = Button1Click
+    OnClick = btn_SimularClick
   end
 end

@@ -1,0 +1,87 @@
+object frmMenu: TfrmMenu
+  Left = 0
+  Top = 0
+  Caption = 'PoC Sistema de Amortiza'#231#227'o Juros'
+  ClientHeight = 454
+  ClientWidth = 672
+  Color = clHighlightText
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsMDIForm
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  WindowState = wsMaximized
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 161
+    Height = 454
+    Align = alLeft
+    Color = clInactiveCaption
+    Enabled = False
+    ParentBackground = False
+    ParentShowHint = False
+    ShowCaption = False
+    ShowHint = True
+    TabOrder = 2
+    ExplicitLeft = 8
+  end
+  object btn_FecharJanelas: TButton
+    Left = 8
+    Top = 59
+    Width = 137
+    Height = 49
+    Caption = 'FECHAR JANELAS'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    OnClick = btn_FecharJanelasClick
+  end
+  object btn_Simular: TButton
+    Left = 8
+    Top = 11
+    Width = 137
+    Height = 49
+    Caption = 'SIMULAR'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = btn_SimularClick
+  end
+  object btn_Sair: TButton
+    Left = 8
+    Top = 107
+    Width = 137
+    Height = 49
+    Caption = 'SAIR'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+    OnClick = btn_SairClick
+  end
+  object Button1: TButton
+    Left = 167
+    Top = 421
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 4
+  end
+end
