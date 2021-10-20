@@ -29,8 +29,7 @@ object frmMenu: TfrmMenu
     ShowCaption = False
     ShowHint = True
     TabOrder = 2
-    ExplicitTop = 47
-    ExplicitHeight = 413
+    ExplicitLeft = 503
   end
   object btn_Sair: TButton
     Left = 8

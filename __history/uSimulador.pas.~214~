@@ -56,6 +56,8 @@ begin
   pn_InfoJuros.Caption := '';
   pn_InfoMeses.Caption := '';
   pn_InfoCapital.Caption := '';
+  umaSimulacao.destrua_se();
+  umaSimulacao := simulacoes.crieObj();
 end;
 
 procedure TfrmSimuladores.btn_SairClick(Sender: TObject);
@@ -65,19 +67,22 @@ end;
 
 procedure TfrmSimuladores.btn_SimularClick(Sender: TObject);
 begin
-  if (pn_InfoCapital.Caption <> '') OR (edt_Capital.Text = '') then
+  if (edt_Capital.Text = '') OR (pn_InfoCapital.Caption <> '') then
     edt_Capital.SetFocus
-  else if (pn_InfoMeses.Caption <> '') OR (edt_Meses.Text = '') then
+  else if (edt_Meses.Text = '') OR (pn_InfoMeses.Caption <> '') then
    edt_Meses.SetFocus
-  else if (pn_InfoJuros.Caption <> '') OR (edt_Juros.Text = '') then
+  else if (edt_Juros.Text = '') OR (pn_InfoJuros.Caption <> '') then
     edt_Juros.SetFocus
   else
   begin
-     umaSimulacao.Capital := StrToFloat(edt_Capital.Text);
-     umaSimulacao.Taxa    := StrToFloat(StringReplace(edt_Juros.Text, '%', '', []));
-     umaSimulacao.Meses   := StrToInt(edt_Meses.Text);
-     umaSimulacao.gerarParcelas;
-     self.gerarListView; 
+   umaSimulacao.Capital := StrToFloat(StringReplace(edt_Capital.Text, '.', '', []));
+   umaSimulacao.Taxa    := StrToFloat(
+                              StringReplace(StringReplace(edt_Juros.Text, '.', '', []),
+                                            '%', '', [])
+                           );
+   umaSimulacao.Meses   := StrToInt(edt_Meses.Text);
+   umaSimulacao.gerarParcelas;
+   self.gerarListView;
   end
 end;
 
@@ -85,14 +90,16 @@ procedure TfrmSimuladores.edt_CapitalExit(Sender: TObject);
 var
   vlCapital : double;
 begin
-  edt_Capital.Text := StringReplace(edt_Capital.Text, '.', ',', []);
   if not TryStrToFloat(self.edt_Capital.Text, vlCapital) then
     pn_InfoCapital.Caption := ('O valor inválido!')
   else
     if vlCapital <= 0 then
       pn_InfoCapital.Caption := ('O valor inválido!')
     else
-      pn_InfoCapital.Caption := ''; 
+    begin
+      pn_InfoCapital.Caption := '';
+      edt_capital.Text := FormatFloat('#,##0.00', vlCapital);
+    end;
 end;
 
 procedure TfrmSimuladores.edt_JurosExit(Sender: TObject);
@@ -106,7 +113,10 @@ begin
     if vlTaxa <= 0 then 
       pn_InfoJuros.Caption := ('O valor inválido!')
     else
-      pn_InfoJuros.Caption := '';  
+    begin
+      pn_InfoJuros.Caption := '';
+      edt_Juros.Text := FormatFloat('#,##0.00', vlTaxa);
+    end;
 end;
 
 procedure TfrmSimuladores.edt_MesesExit(Sender: TObject);
@@ -125,11 +135,6 @@ end;
 procedure TfrmSimuladores.FormActivate(Sender: TObject);
 begin
   umaSimulacao := simulacoes.crieObj();
-  if ((self.Left <> 1) and (self.top <> 1)) then
-  begin
-    self.Left := 1;
-    self.Top := 1;
-  end;
 end;
 
 procedure TfrmSimuladores.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -145,6 +150,7 @@ Var
   vlItem : TListItem;
   vlJurosTotal : real;
 begin
+  lv_Parcelas.Items.Clear;
   vlJurosTotal := 0;
   for I := 0 to umaSimulacao.ListaParcelas.Count - 1 do
   begin

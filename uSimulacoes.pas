@@ -101,6 +101,12 @@ Var
   vlParcela    : parcelas;
   i            : integer;
 begin
+  if ListaParcelas.Count > 0 then
+  begin
+    ListaParcelas.Destroy;
+    ListaParcelas := TList<parcelas>.Create();
+  end;
+
   vlParcela := parcelas.crieObj(0, 0, 0, 0, Capital);
   ListaParcelas.Add(vlParcela);
   ListaParcelas.Count := 1;

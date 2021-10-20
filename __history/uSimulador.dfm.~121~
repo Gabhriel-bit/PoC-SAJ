@@ -6,12 +6,13 @@ object frmSimuladores: TfrmSimuladores
   Margins.Top = 10
   Margins.Right = 10
   Margins.Bottom = 10
+  Anchors = [akRight]
   Caption = 'frmSimuladores'
   ClientHeight = 411
   ClientWidth = 784
   Color = clBtnFace
-  Constraints.MaxHeight = 600
-  Constraints.MaxWidth = 1115
+  Constraints.MaxHeight = 450
+  Constraints.MaxWidth = 800
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -19,10 +20,11 @@ object frmSimuladores: TfrmSimuladores
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
-  Position = poDesigned
+  Position = poDefault
   Visible = True
   OnActivate = FormActivate
   OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -40,10 +42,6 @@ object frmSimuladores: TfrmSimuladores
     ParentFont = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitLeft = 56
-    ExplicitTop = -64
-    ExplicitWidth = 802
-    ExplicitHeight = 446
     DesignSize = (
       784
       411)
@@ -56,8 +54,6 @@ object frmSimuladores: TfrmSimuladores
       TabOrder = 2
       TextHint = 'Taxa de juros (ex: 5%)'
       OnExit = edt_JurosExit
-      ExplicitLeft = 2
-      ExplicitTop = 55
     end
     object edt_Capital: TEdit
       Left = 1
@@ -68,8 +64,6 @@ object frmSimuladores: TfrmSimuladores
       TabOrder = 0
       TextHint = 'Capital'
       OnExit = edt_CapitalExit
-      ExplicitLeft = 2
-      ExplicitTop = -5
     end
     object edt_Meses: TEdit
       Left = 1
@@ -127,7 +121,8 @@ object frmSimuladores: TfrmSimuladores
         end>
       GridLines = True
       ReadOnly = True
-      TabOrder = 3
+      TabOrder = 10
+      TabStop = False
       ViewStyle = vsReport
     end
     object pn_TiuloParcelas: TPanel
@@ -139,9 +134,7 @@ object frmSimuladores: TfrmSimuladores
       Caption = 'Sistema de Pagamento '#250'nico'
       Color = clHighlightText
       ParentBackground = False
-      TabOrder = 4
-      ExplicitLeft = 0
-      ExplicitTop = 67
+      TabOrder = 7
     end
     object btn_Sair: TButton
       Left = 521
@@ -172,7 +165,7 @@ object frmSimuladores: TfrmSimuladores
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 3
       OnClick = btn_SimularClick
     end
     object btn_Limpar: TButton
@@ -188,7 +181,7 @@ object frmSimuladores: TfrmSimuladores
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 4
       OnClick = btn_LimparClick
     end
     object pn_InfoJuros: TPanel
@@ -205,7 +198,7 @@ object frmSimuladores: TfrmSimuladores
       Font.Style = []
       ParentBackground = False
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 6
     end
     object pn_InfoMeses: TPanel
       Left = 600
@@ -221,7 +214,7 @@ object frmSimuladores: TfrmSimuladores
       Font.Style = []
       ParentBackground = False
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 8
     end
     object pn_InfoCapital: TPanel
       Left = 600
@@ -237,7 +230,7 @@ object frmSimuladores: TfrmSimuladores
       Font.Style = []
       ParentBackground = False
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 9
     end
   end
 end

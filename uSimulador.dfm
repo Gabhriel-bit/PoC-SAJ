@@ -41,10 +41,6 @@ object frmSimuladores: TfrmSimuladores
     ParentFont = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitLeft = 56
-    ExplicitTop = -64
-    ExplicitWidth = 802
-    ExplicitHeight = 446
     DesignSize = (
       784
       411)
@@ -57,8 +53,6 @@ object frmSimuladores: TfrmSimuladores
       TabOrder = 2
       TextHint = 'Taxa de juros (ex: 5%)'
       OnExit = edt_JurosExit
-      ExplicitLeft = 2
-      ExplicitTop = 55
     end
     object edt_Capital: TEdit
       Left = 1
@@ -69,7 +63,7 @@ object frmSimuladores: TfrmSimuladores
       TabOrder = 0
       TextHint = 'Capital'
       OnExit = edt_CapitalExit
-      ExplicitLeft = 0
+      ExplicitLeft = 2
       ExplicitTop = -4
     end
     object edt_Meses: TEdit
@@ -131,8 +125,6 @@ object frmSimuladores: TfrmSimuladores
       TabOrder = 10
       TabStop = False
       ViewStyle = vsReport
-      ExplicitLeft = 0
-      ExplicitTop = 108
     end
     object pn_TiuloParcelas: TPanel
       Left = 1
@@ -144,8 +136,6 @@ object frmSimuladores: TfrmSimuladores
       Color = clHighlightText
       ParentBackground = False
       TabOrder = 7
-      ExplicitLeft = 0
-      ExplicitTop = 67
     end
     object btn_Sair: TButton
       Left = 521

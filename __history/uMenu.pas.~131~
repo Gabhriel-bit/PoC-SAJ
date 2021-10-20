@@ -13,7 +13,6 @@ type
     btn_FecharJanelas: TButton;
     Panel1: TPanel;
     btn_Sair: TButton;
-    ImageList1: TImageList;
     procedure btn_SimularClick(Sender: TObject);
     procedure btn_FecharJanelasClick(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
@@ -52,6 +51,9 @@ end;
 function TfrmMenu.CriarFrmSimulador(): TfrmSimuladores;
 begin
     result := TfrmSimuladores.Create(self);
+    result.DesabilBtnMax();
+    if MDIChildCount > 2 then
+      self.ActiveMDIChild.WindowState := wsMinimized;
     self.MDIChildren[self.MDIChildCount - 1].Show;
 end;
 

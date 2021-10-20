@@ -13,7 +13,6 @@ type
       FamrSaldDev : real;
       Fpagamento : real;
       FsaldoDev : real;
-    protected
     public
       constructor crieObj();overload;
       constructor crieObj(pNumerp : integer; pJuros, pAmrSalDev, pPagamento, pSalDev: real);overload;
@@ -32,7 +31,6 @@ type
       Ftaxa    : real;
       Fmeses   : integer;
       FlistaParcelas : TList<parcelas>;
-    protected
     public
       constructor crieObj();overload;
       constructor crieObj(pCapital, pTaxa : real; pMeses : integer);overload;
@@ -54,20 +52,20 @@ implementation
 constructor parcelas.crieObj(pNumerp: integer; pJuros, pAmrSalDev, pPagamento,
   pSalDev: real);
 begin
-  Fnumero := pNumerp;
-  Fjuros := pJuros;
+  Fnumero     := pNumerp;
+  Fjuros      := pJuros;
   FamrSaldDev := pAmrSalDev;
-  Fpagamento := pPagamento;
-  FsaldoDev := pSalDev;
+  Fpagamento  := pPagamento;
+  FsaldoDev   := pSalDev;
 end;
 
 constructor parcelas.crieObj;
 begin
-  Fnumero := 0;
-  Fjuros := 0;
+  Fnumero     := 0;
+  Fjuros      := 0;
   FamrSaldDev := 0;
-  Fpagamento := 0;
-  FsaldoDev := 0;
+  Fpagamento  := 0;
+  FsaldoDev   := 0;
 end;
 
 destructor parcelas.destrua_se;
@@ -84,8 +82,8 @@ end;
 constructor simulacoes.crieObj(pCapital, pTaxa: real; pMeses: integer);
 begin
   Fcapital := pCapital;
-  Fmeses := pMeses;
-  Ftaxa := pTaxa;
+  Fmeses   := pMeses;
+  Ftaxa    := pTaxa;
   FlistaParcelas := TList<parcelas>.Create();
 end;
 
@@ -101,13 +99,14 @@ end;
 procedure simulacoes.gerarParcelas;
 Var
   vlParcela    : parcelas;
-  vlJurosTotal : real;
   i            : integer;
 begin
+  for I := 0 to FlistaParcelas.Count - 1 do
+    FlistaParcelas[I].destrua_se();
+
   vlParcela := parcelas.crieObj(0, 0, 0, 0, Capital);
   ListaParcelas.Add(vlParcela);
   ListaParcelas.Count := 1;
-  vlJurosTotal := 0;
 
   for I := 1 to Meses - 1 do
   begin
@@ -118,23 +117,25 @@ begin
       0,
       ListaParcelas[I - 1].SalDev + (ListaParcelas[I - 1].SalDev * (Taxa / 100))
     );
-    vlJurosTotal := vlJurosTotal + vlParcela.Juros;
     ListaParcelas.Add(vlParcela.Clone);
     ListaParcelas.Count := I + 1;
   end;
+
   vlParcela := parcelas.crieObj(
-    Meses, ListaParcelas[Meses - 1].SalDev * (Taxa / 100),
+    Meses,
+    ListaParcelas[Meses - 1].SalDev * (Taxa / 100),
     Capital,
-    ListaParcelas[Meses - 1].SalDev + ListaParcelas[Meses - 1].SalDev * (Taxa / 100), 0);
+    ListaParcelas[Meses - 1].SalDev + ListaParcelas[Meses - 1].SalDev * (Taxa / 100),
+    0
+  );
   ListaParcelas.Add(vlParcela.Clone);
-  ListaParcelas.Count := ListaParcelas.Count + 1;
 end;
 
 constructor simulacoes.crieObj;
 begin
   Fcapital := 0;
-  Fmeses := 0;
-  Ftaxa := 0;
+  Fmeses   := 0;
+  Ftaxa    := 0;
   FlistaParcelas := TList<parcelas>.Create();
 end;
 

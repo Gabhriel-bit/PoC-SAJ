@@ -29,41 +29,10 @@ object frmMenu: TfrmMenu
     ShowCaption = False
     ShowHint = True
     TabOrder = 2
-    ExplicitLeft = 8
-  end
-  object btn_FecharJanelas: TButton
-    Left = 8
-    Top = 59
-    Width = 137
-    Height = 49
-    Caption = 'FECHAR JANELAS'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 1
-    OnClick = btn_FecharJanelasClick
-  end
-  object btn_Simular: TButton
-    Left = 8
-    Top = 11
-    Width = 137
-    Height = 49
-    Caption = 'SIMULAR'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 0
-    OnClick = btn_SimularClick
   end
   object btn_Sair: TButton
     Left = 8
-    Top = 107
+    Top = 108
     Width = 137
     Height = 49
     Caption = 'SAIR'
@@ -75,5 +44,35 @@ object frmMenu: TfrmMenu
     ParentFont = False
     TabOrder = 3
     OnClick = btn_SairClick
+  end
+  object btn_FecharJanelas: TButton
+    Left = 8
+    Top = 58
+    Width = 137
+    Height = 49
+    Caption = 'LIMPAR'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    OnClick = btn_FecharJanelasClick
+  end
+  object btn_Simular: TButton
+    Left = 8
+    Top = 8
+    Width = 137
+    Height = 49
+    Caption = 'SIMULAR'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = btn_SimularClick
   end
 end

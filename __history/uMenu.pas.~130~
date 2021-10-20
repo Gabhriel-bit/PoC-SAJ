@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uSimulador, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uSimulador, Vcl.ExtCtrls,
+  System.ImageList, Vcl.ImgList;
 
 type
   TfrmMenu = class(TForm)
@@ -50,6 +51,8 @@ end;
 function TfrmMenu.CriarFrmSimulador(): TfrmSimuladores;
 begin
     result := TfrmSimuladores.Create(self);
+    if MDIChildCount > 2 then
+      self.ActiveMDIChild.WindowState := wsMinimized;
     self.MDIChildren[self.MDIChildCount - 1].Show;
 end;
 
